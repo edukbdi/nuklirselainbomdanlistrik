@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuklir Bukan Hanya Bom dan Listrik | KBDI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --bg: #0d1117;
+      --bg2: #161b22;
+      --bg3: #1c2333;
+      --surface: #21262d;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --text-dim: #6e7681;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+      --accent3: #f0883e;
+      --accent4: #bc8cff;
+      --accent5: #ff7b72;
+      --accent6: #39d353;
+      --glow: rgba(88,166,255,0.15);
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-serif: 'Libre Baskerville', Georgia, serif;
+    }
+
+    html.light {
+      --bg: #f6f8fa;
+      --bg2: #ffffff;
+      --bg3: #f0f4f8;
+      --surface: #ffffff;
+      --border: #d0d7de;
+      --text: #1f2328;
+      --text-muted: #57606a;
+      --text-dim: #8c959f;
+      --accent: #0969da;
+      --accent2: #1a7f37;
+      --accent3: #bc4c00;
+      --accent4: #7c3aed;
+      --accent5: #cf222e;
+      --accent6: #1a7f37;
+      --glow: rgba(9,105,218,0.08);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
+      padding-top: 60px; /* for sticky KBDI header */
+    }
+
+    /* ===== ARTICLE WRAPPER ===== */
+    .article-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.25rem 4rem;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 1.25rem 2.5rem;
+      text-align: center;
+    }
+
+    .hero-physics-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.07;
+    }
+
+    html.light .hero-physics-bg { opacity: 0.05; }
+
+    .hero-category {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--glow);
+      border: 1px solid var(--accent);
+      border-radius: 2rem;
+      padding: 0.25rem 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.75rem, 5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text);
+      max-width: 720px;
+      margin: 0 auto 1.25rem;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero-lead {
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .hero-meta span { display: flex; align-items: center; gap: 0.35rem; }
+
+    /* ===== NUCLEUS DECORATION ===== */
+    .nucleus-deco {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      position: relative;
+    }
+
+    /* ===== SECTION ICONS ROW ===== */
+    .section-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      padding: 1.5rem 1.25rem;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-nav a {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .section-nav a:hover {
+      color: var(--text);
+      border-color: var(--accent);
+      background: var(--glow);
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .article-content {
+      padding-top: 2.5rem;
+    }
+
+    /* ===== SECTION ===== */
+    .section {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-icon {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .section-icon.medical  { background: rgba(255,123,114,0.15); }
+    .section-icon.agri     { background: rgba(63,185,80,0.15); }
+    .section-icon.industry { background: rgba(248,166,62,0.15); }
+    .section-icon.space    { background: rgba(88,166,255,0.15); }
+    .section-icon.env      { background: rgba(57,211,83,0.15); }
+    .section-icon.research { background: rgba(188,140,255,0.15); }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    /* ===== BODY TEXT ===== */
+    p {
+      font-size: 0.975rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    /* ===== CARD GRID ===== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .card-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .card h4 {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .card p { font-size: 0.87rem; color: var(--text-muted); margin: 0; }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+      border-left: 3px solid var(--accent);
+      background: var(--glow);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      font-size: 0.92rem;
+    }
+
+    .highlight-box.green  { border-color: var(--accent2); background: rgba(63,185,80,0.08); }
+    .highlight-box.orange { border-color: var(--accent3); background: rgba(240,136,62,0.08); }
+    .highlight-box.purple { border-color: var(--accent4); background: rgba(188,140,255,0.08); }
+
+    .highlight-box strong { color: var(--accent); }
+    .highlight-box.green strong  { color: var(--accent2); }
+    .highlight-box.orange strong { color: var(--accent3); }
+    .highlight-box.purple strong { color: var(--accent4); }
+
+    /* ===== STAT CHIPS ===== */
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.25rem 0;
+    }
+
+    .stat-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      text-align: center;
+      min-width: 110px;
+    }
+
+    .stat-chip .num {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-chip .lbl {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    /* ===== SOURCE BADGE ===== */
+    .source-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.1rem 0.5rem;
+      text-decoration: none;
+      margin-left: 0.25rem;
+      vertical-align: middle;
+    }
+
+    /* ===== RTG DIAGRAM ===== */
+    .rtg-diagram {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      overflow-x: auto;
+    }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* ===== INTRO BOX ===== */
+    .intro-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent4), var(--accent2));
+    }
+
+    .intro-box p { margin: 0; font-size: 1.025rem; }
+
+    /* ===== CLOSING ===== */
+    .closing {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .closing .closing-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+
+    .closing h3 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .closing p { color: var(--text-muted); max-width: 560px; margin: 0 auto; font-size: 0.9rem; }
+
+    /* ===== REFERENCES ===== */
+    .references {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .references h3 {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .references ol {
+      padding-left: 1.25rem;
+    }
+
+    .references li {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .references a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .references a:hover { text-decoration: underline; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .section-nav { top: 56px; gap: 0.35rem; padding: 1rem; }
+      .section-nav a { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
+      .card-grid { grid-template-columns: 1fr; }
+      .stat-row { gap: 0.5rem; }
+      .stat-chip { min-width: 90px; }
+      .hero { padding: 2rem 1rem 1.75rem; }
+    }
+
+    /* ===== PHYSICS DECORATION SVGs (inline) ===== */
+    .deco-float {
+      position: absolute;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+    html.light .deco-float { opacity: 0.03; }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <!-- Physics background decoration -->
+    <svg class="hero-physics-bg" viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <!-- Atom orbits -->
+      <ellipse cx="100" cy="130" rx="80" ry="30" fill="none" stroke="#58a6ff" stroke-width="1.5"/>
+      <ellipse cx="100" cy="130" rx="80" ry="30" fill="none" stroke="#58a6ff" stroke-width="1.5" transform="rotate(60,100,130)"/>
+      <ellipse cx="100" cy="130" rx="80" ry="30" fill="none" stroke="#58a6ff" stroke-width="1.5" transform="rotate(120,100,130)"/>
+      <circle cx="100" cy="130" r="8" fill="#58a6ff"/>
+      <!-- Wave lines -->
+      <path d="M 200 80 Q 230 50 260 80 Q 290 110 320 80 Q 350 50 380 80" stroke="#3fb950" stroke-width="1.5" fill="none"/>
+      <path d="M 200 100 Q 230 70 260 100 Q 290 130 320 100 Q 350 70 380 100" stroke="#3fb950" stroke-width="1" fill="none" opacity="0.5"/>
+      <!-- E=mc² text -->
+      <text x="450" y="100" font-size="48" fill="#bc8cff" font-family="serif" font-style="italic">E=mc²</text>
+      <!-- Radioactive symbol -->
+      <g transform="translate(720,90) scale(1.2)">
+        <circle cx="50" cy="50" r="12" fill="#f0883e"/>
+        <path d="M50,38 L50,10 A40,40 0 0,1 84.6,30 Z" fill="#f0883e"/>
+        <path d="M84.6,70 A40,40 0 0,1 50,90 L50,62 Z" fill="#f0883e"/>
+        <path d="M15.4,30 A40,40 0 0,1 50,10 L50,38 Z" fill="none"/>
+        <path d="M50,62 A40,40 0 0,1 15.4,30 L38,44 Z" fill="#f0883e"/>
+        <circle cx="50" cy="50" r="6" fill="var(--bg)"/>
+      </g>
+      <!-- Neutron paths -->
+      <line x1="500" y1="160" x2="580" y2="200" stroke="#ff7b72" stroke-width="1" stroke-dasharray="4 3"/>
+      <line x1="580" y1="200" x2="640" y2="170" stroke="#ff7b72" stroke-width="1" stroke-dasharray="4 3"/>
+      <circle cx="580" cy="200" r="4" fill="#ff7b72"/>
+      <circle cx="500" cy="160" r="4" fill="#ff7b72"/>
+      <!-- Formula -->
+      <text x="200" y="200" font-size="18" fill="#58a6ff" font-family="monospace">½mv² = ΔE</text>
+    </svg>
+
+    <!-- Nucleus decoration -->
+    <div class="nucleus-deco">
+      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <!-- Nucleus orbits -->
+        <ellipse cx="40" cy="40" rx="35" ry="13" fill="none" stroke="#58a6ff" stroke-width="1.5" opacity="0.8"/>
+        <ellipse cx="40" cy="40" rx="35" ry="13" fill="none" stroke="#3fb950" stroke-width="1.5" opacity="0.8" transform="rotate(60,40,40)"/>
+        <ellipse cx="40" cy="40" rx="35" ry="13" fill="none" stroke="#bc8cff" stroke-width="1.5" opacity="0.8" transform="rotate(120,40,40)"/>
+        <!-- Core -->
+        <circle cx="40" cy="40" r="9" fill="#f0883e" opacity="0.9"/>
+        <circle cx="37" cy="38" r="3.5" fill="#ff7b72"/>
+        <circle cx="43" cy="37" r="3" fill="#ffa657"/>
+        <circle cx="40" cy="43" r="3.5" fill="#ff7b72"/>
+        <!-- Electrons -->
+        <circle cx="75" cy="40" r="2.5" fill="#58a6ff"/>
+        <circle cx="57.5" cy="28.5" r="2.5" fill="#3fb950"/>
+        <circle cx="22.5" cy="28.5" r="2.5" fill="#bc8cff"/>
+      </svg>
+    </div>
+
+    <div class="hero-category">⚛️ Fisika &amp; Sains</div>
+
+    <h1>Nuklir Bukan Hanya <span>Bom dan Listrik</span></h1>
+
+    <p class="hero-lead">
+      Dari mengobati kanker hingga menggerakkan pesawat luar angkasa di ujung tata surya — teknologi nuklir telah mengubah dunia jauh melampaui bayang-bayang senjata dan reaktor.
+    </p>
+
+    <div class="hero-meta">
+      <span>📅 2025</span>
+      <span>✍️ KBDI Redaksi</span>
+      <span>🏷️ Fisika Terapan</span>
+      <span>⏱️ ~8 menit baca</span>
+    </div>
+  </div>
+
+  <!-- SECTION NAV -->
+  <nav class="section-nav" aria-label="Navigasi bagian">
+    <a href="#kedokteran">🏥 Kedokteran</a>
+    <a href="#pertanian">🌾 Pertanian</a>
+    <a href="#industri">🔧 Industri</a>
+    <a href="#antariksa">🚀 Antariksa</a>
+    <a href="#lingkungan">💧 Lingkungan</a>
+    <a href="#riset">🔬 Riset</a>
+  </nav>
+
+  <!-- ARTICLE CONTENT -->
+  <main class="article-wrap">
+    <div class="article-content">
+
+      <!-- INTRO -->
+      <div class="intro-box">
+        <p>
+          Ketika mendengar kata <em>nuklir</em>, kebanyakan orang membayangkan bom atom atau reaktor pembangkit listrik. Padahal teknologi ini telah meresap jauh lebih dalam ke kehidupan sehari-hari — mulai dari detektor asap di langit-langit ruangan, pengawet makanan di supermarket, hingga sumber tenaga wahana antariksa yang kini berada di luar tata surya. Artikel ini membahas enam ranah besar pemanfaatan teknologi nuklir damai yang jarang disadari publik.
+        </p>
+      </div>
+
+      <!-- ===== SECTION 1: KEDOKTERAN ===== -->
+      <section class="section" id="kedokteran">
+        <div class="section-header">
+          <div class="section-icon medical">🏥</div>
+          <div>
+            <div class="section-title">1. Kedokteran &amp; Kesehatan</div>
+            <div class="section-subtitle">Diagnosis, terapi, dan sterilisasi berbasis radiasi</div>
+          </div>
+        </div>
+
+        <p>
+          Kedokteran adalah salah satu bidang yang paling awal dan paling luas memanfaatkan teknologi nuklir. Rumah sakit modern hampir tidak bisa berfungsi penuh tanpa teknologi berbasis radiasi. <span class="source-badge">BATAN</span>
+        </p>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-label" style="color: var(--accent5);">Diagnosis</div>
+            <h4>PET Scan &amp; SPECT</h4>
+            <p>Melacak metabolisme sel secara real-time menggunakan isotop radioaktif berumur pendek. Vital untuk deteksi dini kanker dan penyakit jantung.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent5);">Terapi</div>
+            <h4>Radioterapi Kanker</h4>
+            <p>Sinar gamma dan berkas proton menghancurkan sel tumor dengan presisi tinggi, meminimalkan kerusakan jaringan sehat di sekitarnya.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent5);">Farmasi</div>
+            <h4>Radiofarmaka</h4>
+            <p>Obat-obatan berbasis isotop radioaktif untuk diagnosis dan terapi kanker, dikembangkan aktif oleh BRIN bersama IAEA sejak 2024.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent5);">Sterilisasi</div>
+            <h4>Alat Medis Steril</h4>
+            <p>Sinar gamma mensterilkan peralatan medis dalam kemasan tertutup — lebih efisien dan lebih andal dibanding metode panas konvensional.</p>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <strong>Indonesia:</strong> BRIN dan IAEA menjalankan program Technical Cooperation (TCP) 2024–2025 untuk memperkuat kapasitas nasional dalam aplikasi radiasi di bidang kesehatan, mencakup pelatihan fisikawan medis dan pengembangan modul pembelajaran berbasis standar IAEA. <span class="source-badge" href="https://sci-ui.id/en/fmipa-ui-dan-iaea-bahas-penguatan-program-kerja-sama-teknologi-nuklir-untuk-kesehatan/">FMIPA UI × IAEA, 2024</span>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ===== SECTION 2: PERTANIAN ===== -->
+      <section class="section" id="pertanian">
+        <div class="section-header">
+          <div class="section-icon agri">🌾</div>
+          <div>
+            <div class="section-title">2. Pertanian &amp; Ketahanan Pangan</div>
+            <div class="section-subtitle">Varietas unggul, pengawetan, dan pengendalian hama</div>
+          </div>
+        </div>
+
+        <p>
+          Teknologi nuklir memainkan peran diam-diam namun krusial dalam pertanian global. Sejak 1950-an, iradiasi gamma telah digunakan untuk merekayasa sifat genetik tanaman tanpa meninggalkan residu kimia.
+        </p>
+
+        <div class="stat-row">
+          <div class="stat-chip">
+            <span class="num" style="color: var(--accent2);">3.000+</span>
+            <span class="lbl">varietas tanaman hasil mutasi radiasi (FAO/IAEA)</span>
+          </div>
+          <div class="stat-chip">
+            <span class="num" style="color: var(--accent2);">50+</span>
+            <span class="lbl">negara menggunakan iradiasi pangan</span>
+          </div>
+          <div class="stat-chip">
+            <span class="num" style="color: var(--accent2);">7–11 t</span>
+            <span class="lbl">hasil padi/ha (dari 4–5 t sebelumnya)</span>
+          </div>
+        </div>
+
+        <p>
+          <strong>Teknik Mutasi Radiasi</strong> bekerja dengan menyinari benih dengan sinar gamma hingga lapisan kromosom, memicu perubahan acak pada DNA. Melalui seleksi ketat, varietas yang tahan hama, tahan kekeringan, atau berproduksi tinggi dapat diisolasi. Teknik ini aman dikonsumsi karena radiasi <em>tidak mengendap</em> dalam bahan pangan. <span class="source-badge">Pak Tani Digital / BATAN</span>
+        </p>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-label" style="color: var(--accent2);">Hama</div>
+            <h4>Teknik Serangga Mandul (SIT)</h4>
+            <p>Serangga jantan diradiasi hingga steril, lalu dilepas ke alam. Perkawinan dengan betina tidak menghasilkan keturunan — populasi hama anjlok tanpa pestisida. Telah diterapkan di Kroasia untuk lalat buah jeruk.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent2);">Pangan</div>
+            <h4>Iradiasi Pangan</h4>
+            <p>Sinar gamma membunuh bakteri patogen dan mencegah pembusukan tanpa memasak. Codex Alimentarius Commission menyatakan metode ini aman pada dosis rata-rata standar.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent2);">Material</div>
+            <h4>Super Water Absorbent Hydrogel</h4>
+            <p>Produk iradiasi nuklir yang menyerap dan mempertahankan air dalam tanah. Di Bantul, Yogyakarta, SWA mengurangi frekuensi penyiraman bawang merah dari 2×/hari menjadi 1×/3 hari.</p>
+          </div>
+        </div>
+
+        <div class="highlight-box green">
+          <strong>Indonesia unggul:</strong> BATAN (kini BRIN) ditunjuk IAEA sebagai <em>collaborating center</em> Asia-Pasifik untuk bidang pemuliaan mutasi tanaman — pengakuan internasional atas kapabilitas riset nuklir pertanian Indonesia. <span class="source-badge">BATAN, 2020</span>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ===== SECTION 3: INDUSTRI ===== -->
+      <section class="section" id="industri">
+        <div class="section-header">
+          <div class="section-icon industry">🔧</div>
+          <div>
+            <div class="section-title">3. Industri &amp; Rekayasa</div>
+            <div class="section-subtitle">Uji tak merusak, pengukuran, dan detektor</div>
+          </div>
+        </div>
+
+        <p>
+          Di pabrik, kilang minyak, dan konstruksi jembatan, radiasi digunakan sebagai "mata tembus" untuk mendeteksi kerusakan tersembunyi — tanpa menghentikan produksi sedetik pun.
+        </p>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-label" style="color: var(--accent3);">NDT</div>
+            <h4>Uji Tak Merusak (NDI/NDT)</h4>
+            <p>Teknik radiografi, gamma scanning, dan gamma tomografi untuk mendeteksi retak, korosi, atau cacat dalam logam, pipa, jembatan, dan komponen pesawat. BRAN ditunjuk IAEA sebagai <em>center of excellence</em> untuk NDT.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent3);">Kontrol Proses</div>
+            <h4>Pengukur Ketebalan &amp; Densitas</h4>
+            <p>Sensor berbasis radiasi mengontrol ketebalan lembaran baja, plastik, atau kertas secara real-time di lini produksi dengan presisi tinggi.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent3);">Rumah Tangga</div>
+            <h4>Detektor Asap Ionisasi</h4>
+            <p>Menggunakan Americium-241 dalam jumlah sangat kecil untuk mendeteksi partikel asap. Hampir setiap detektor asap rumahan mengandung sejumlah kecil bahan radioaktif ini.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent3);">Radiotracer</div>
+            <h4>Pelacak Kebocoran</h4>
+            <p>Isotop radioaktif disuntikkan ke dalam pipa atau sistem industri untuk melacak kebocoran, pola aliran, atau performa kolom destilasi.</p>
+          </div>
+        </div>
+
+        <div class="highlight-box orange">
+          <strong>Cakupan industri di Indonesia:</strong> Teknik NDT nuklir telah diaplikasikan di industri kimia, petrokimia, pengolahan logam, otomotif, perminyakan, pertambangan emas, penerbangan, dan konstruksi bangunan. <span class="source-badge">BATAN, 2020</span>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ===== SECTION 4: ANTARIKSA ===== -->
+      <section class="section" id="antariksa">
+        <div class="section-header">
+          <div class="section-icon space">🚀</div>
+          <div>
+            <div class="section-title">4. Eksplorasi Antariksa</div>
+            <div class="section-subtitle">RTG — "baterai nuklir" penjelajah tata surya</div>
+          </div>
+        </div>
+
+        <p>
+          Matahari terlalu lemah untuk memasok daya di luar sabuk asteroid. Di sanalah <em>Radioisotope Thermoelectric Generator</em> (RTG) menjadi satu-satunya pilihan yang andal. RTG tidak punya komponen bergerak, tidak butuh perawatan, dan dapat beroperasi selama puluhan tahun di kondisi paling ekstrem di alam semesta.
+        </p>
+
+        <div class="rtg-diagram">
+          <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:200px;">
+            <!-- Flow diagram RTG -->
+            <defs>
+              <marker id="arr" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="#8b949e"/>
+              </marker>
+            </defs>
+            <!-- Box 1 -->
+            <rect x="10" y="70" width="140" height="60" rx="8" fill="#21262d" stroke="#f0883e" stroke-width="1.5"/>
+            <text x="80" y="95" text-anchor="middle" fill="#f0883e" font-size="11" font-family="sans-serif" font-weight="600">Peluruhan</text>
+            <text x="80" y="111" text-anchor="middle" fill="#f0883e" font-size="10" font-family="sans-serif">Plutonium-238 (α)</text>
+            <text x="80" y="124" text-anchor="middle" fill="#8b949e" font-size="9" font-family="sans-serif">t½ ≈ 87,7 tahun</text>
+            <!-- Arrow -->
+            <line x1="150" y1="100" x2="195" y2="100" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arr)"/>
+            <text x="172" y="93" text-anchor="middle" fill="#8b949e" font-size="9" font-family="sans-serif">Panas</text>
+            <!-- Box 2 -->
+            <rect x="200" y="70" width="140" height="60" rx="8" fill="#21262d" stroke="#58a6ff" stroke-width="1.5"/>
+            <text x="270" y="95" text-anchor="middle" fill="#58a6ff" font-size="11" font-family="sans-serif" font-weight="600">Termokouple</text>
+            <text x="270" y="111" text-anchor="middle" fill="#8b949e" font-size="10" font-family="sans-serif">Efek Seebeck</text>
+            <text x="270" y="124" text-anchor="middle" fill="#8b949e" font-size="9" font-family="sans-serif">ΔT → ΔV → Arus</text>
+            <!-- Arrow -->
+            <line x1="340" y1="100" x2="385" y2="100" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arr)"/>
+            <text x="362" y="93" text-anchor="middle" fill="#8b949e" font-size="9" font-family="sans-serif">Listrik</text>
+            <!-- Box 3 -->
+            <rect x="390" y="70" width="140" height="60" rx="8" fill="#21262d" stroke="#3fb950" stroke-width="1.5"/>
+            <text x="460" y="95" text-anchor="middle" fill="#3fb950" font-size="11" font-family="sans-serif" font-weight="600">Wahana Antariksa</text>
+            <text x="460" y="111" text-anchor="middle" fill="#8b949e" font-size="10" font-family="sans-serif">Instrumen sains</text>
+            <text x="460" y="124" text-anchor="middle" fill="#8b949e" font-size="9" font-family="sans-serif">Komputer &amp; komunikasi</text>
+            <!-- Efficiency note -->
+            <text x="560" y="85" fill="#8b949e" font-size="9" font-family="sans-serif" text-anchor="middle">~6-8%</text>
+            <text x="560" y="97" fill="#8b949e" font-size="9" font-family="sans-serif" text-anchor="middle">efisiensi</text>
+            <text x="560" y="109" fill="#8b949e" font-size="9" font-family="sans-serif" text-anchor="middle">termal→listrik</text>
+            <!-- Title -->
+            <text x="350" y="25" text-anchor="middle" fill="#e6edf3" font-size="13" font-family="sans-serif" font-weight="600">Cara Kerja RTG (Radioisotope Thermoelectric Generator)</text>
+            <text x="350" y="42" text-anchor="middle" fill="#8b949e" font-size="10" font-family="sans-serif">Panas peluruhan → Listrik via efek Seebeck — tanpa komponen bergerak</text>
+          </svg>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-chip">
+            <span class="num" style="color: var(--accent);">1977</span>
+            <span class="lbl">Voyager 1 &amp; 2 diluncurkan dengan RTG</span>
+          </div>
+          <div class="stat-chip">
+            <span class="num" style="color: var(--accent);">470W</span>
+            <span class="lbl">daya awal tiap Voyager (3 RTG)</span>
+          </div>
+          <div class="stat-chip">
+            <span class="num" style="color: var(--accent);">47+</span>
+            <span class="lbl">tahun RTG Voyager masih berfungsi</span>
+          </div>
+          <div class="stat-chip">
+            <span class="num" style="color: var(--accent);">~220W</span>
+            <span class="lbl">daya tersisa pada 2022</span>
+          </div>
+        </div>
+
+        <p>
+          <strong>Voyager 1 dan 2</strong> masing-masing membawa tiga RTG berbahan Plutonium-238 yang menghasilkan 470 watt saat peluncuran. Misi ini kemudian berhasil melakukan flyby pertama ke Uranus dan Neptunus — pencapaian yang tidak akan mungkin tanpa RTG. Pada 2022, daya yang tersisa sekitar 220 watt per wahana, cukup untuk mengirim data ilmiah dari luar tata surya. <span class="source-badge">NASA/JPL</span> <span class="source-badge">DOE</span>
+        </p>
+
+        <div class="highlight-box">
+          <strong>Misi lain yang menggunakan RTG:</strong> Apollo 12–17 (bulan), Viking (Mars), Pioneer 10 &amp; 11, Galileo (Jupiter), Cassini (Saturnus), New Horizons (Pluto), Curiosity dan Perseverance (Mars). Tanpa RTG, eksplorasi planet luar tata surya secara praktis tidak mungkin dilakukan karena intensitas cahaya matahari terlalu lemah untuk panel surya. <span class="source-badge">NASA DOE</span>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ===== SECTION 5: LINGKUNGAN ===== -->
+      <section class="section" id="lingkungan">
+        <div class="section-header">
+          <div class="section-icon env">💧</div>
+          <div>
+            <div class="section-title">5. Lingkungan &amp; Hidrologi</div>
+            <div class="section-subtitle">Pelacak isotop untuk memahami bumi</div>
+          </div>
+        </div>
+
+        <p>
+          Isotop radioaktif adalah pelacak alami yang luar biasa. Karena setiap isotop memiliki "sidik jari" kimia dan waktu paruh unik, para ilmuwan dapat menggunakannya untuk menelusuri perjalanan air, karbon, dan polutan di seluruh ekosistem.
+        </p>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-label" style="color: var(--accent6);">Hidrologi</div>
+            <h4>Pelacak Air Tanah</h4>
+            <p>Isotop seperti Tritium (³H) dan Deuterium (²H) digunakan untuk memetakan aliran air tanah, mengidentifikasi sumber polusi, dan memperkirakan cadangan akuifer.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent6);">Geofisika</div>
+            <h4>Deteksi Kebocoran Pipa</h4>
+            <p>Radiotracer disuntikkan ke dalam pipa bawah tanah untuk mendeteksi titik kebocoran yang tidak terlihat dari permukaan — hemat biaya dan waktu dibanding penggalian.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent6);">Kelautan</div>
+            <h4>Pemantauan Polusi Laut</h4>
+            <p>Isotop digunakan untuk melacak dispersi polutan, sedimen, dan aliran massa air laut — membantu pemahaman dampak tumpahan minyak dan limbah industri.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent6);">Geothermal</div>
+            <h4>Penentuan Titik Panas Bumi</h4>
+            <p>Analisis isotop radioaktif alami membantu memetakan sumber panas bumi — relevan bagi Indonesia yang kaya potensi geothermal.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ===== SECTION 6: RISET ===== -->
+      <section class="section" id="riset">
+        <div class="section-header">
+          <div class="section-icon research">🔬</div>
+          <div>
+            <div class="section-title">6. Riset Ilmiah &amp; Arkeologi</div>
+            <div class="section-subtitle">Penanggalan radiokarbon dan struktur materi</div>
+          </div>
+        </div>
+
+        <p>
+          Salah satu sumbangan terbesar fisika nuklir bagi ilmu pengetahuan adalah kemampuan membaca waktu dari sisa-sisa radioaktif yang tertinggal dalam materi organik.
+        </p>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-label" style="color: var(--accent4);">Arkeologi</div>
+            <h4>Penanggalan Radiokarbon (C-14)</h4>
+            <p>Carbon-14 terbentuk di atmosfer dan diserap makhluk hidup. Saat organisme mati, C-14 meluruh dengan waktu paruh ~5.730 tahun. Rasio C-14/C-12 yang tersisa mengungkap umur artefak hingga ~50.000 tahun.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent4);">Biologi Molekuler</div>
+            <h4>Penelitian Protein &amp; DNA</h4>
+            <p>Pelacak radioaktif digunakan untuk memahami jalur metabolisme, interaksi protein, dan replikasi DNA — fondasi dari banyak terobosan biomedis modern.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent4);">Material</div>
+            <h4>Hamburan Neutron</h4>
+            <p>Berkas neutron dari reaktor riset digunakan untuk menganalisis struktur kristal, polimer, dan material baru — tak tergantikan dalam pengembangan baterai dan material nano.</p>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color: var(--accent4);">Geologi</div>
+            <h4>Penanggalan Isotop Lain</h4>
+            <p>Uranium-Lead (U-Pb) untuk batuan berumur miliaran tahun, Kalium-Argon untuk vulkanologi — memungkinkan rekonstruksi sejarah bumi dan evolusi kehidupan.</p>
+          </div>
+        </div>
+
+        <div class="highlight-box purple">
+          <strong>Indonesia:</strong> BRIN mengoperasikan tiga reaktor riset yang dimanfaatkan untuk analisis aktivasi neutron, produksi radioisotop, dan pendidikan ahli nuklir nasional. <span class="source-badge">indonesia.go.id, 2024</span>
+        </div>
+      </section>
+
+      <!-- CLOSING -->
+      <div class="closing">
+        <div class="closing-icon">⚛️</div>
+        <h3>Satu Teknologi, Ribuan Manfaat</h3>
+        <p>
+          Dari sel kanker yang dihancurkan sinar gamma hingga sinyal Voyager yang dikirim dari batas tata surya, teknologi nuklir telah membuktikan dirinya sebagai salah satu pencapaian sains terbesar abad ke-20 — yang terus relevan jauh melampaui bom dan pembangkit listrik.
+        </p>
+      </div>
+
+      <!-- REFERENCES -->
+      <div class="references">
+        <h3>Sumber &amp; Referensi</h3>
+        <ol>
+          <li>BATAN. (2020). <em>Inilah Pemanfaatan Nuklir di Bidang Pertanian dan Industri</em>. batan.go.id</li>
+          <li>BRIN × IAEA. (2024). <em>Workshop Proteksi dan Keselamatan Radiasi dalam Penerapan Radiofarmaka</em>. brin.go.id</li>
+          <li>FMIPA UI. (2024). <em>FMIPA UI dan IAEA Bahas Penguatan Program Kerja Sama Teknologi Nuklir untuk Kesehatan</em>. sci-ui.id</li>
+          <li>indonesia.go.id. (2024). <em>Kolaborasi RI-Rusia untuk Teknologi Kesehatan dan Pangan</em>. indonesia.go.id</li>
+          <li>Pak Tani Digital. (2025). <em>Pemanfaatan Teknologi Nuklir pada Pertanian</em>. paktanidigital.com</li>
+          <li>NASA / JPL. (2023). <em>Voyager's RTG</em>. jpl.nasa.gov</li>
+          <li>U.S. Department of Energy. (2024). <em>What is a Radioisotope Power System?</em> energy.gov</li>
+          <li>U.S. Department of Energy. (2024). <em>Powering Curiosity: Multi-Mission RTGs</em>. energy.gov</li>
+          <li>Bappenas Working Papers. (2025). <em>Industri Tenaga Nuklir Indonesia</em>, Vol. VIII No. 1. workingpapers.bappenas.go.id</li>
+        </ol>
+      </div>
+
+    </div><!-- /article-content -->
+  </main>
+
+  <!-- KBDI HEADER & FOOTER via fetch -->
+  <script>
+    const savedTheme = localStorage.getItem('kbdi-theme');
+    if (savedTheme === 'light') document.documentElement.classList.add('light');
+
+    fetch('https://edukbdi.github.io/header.html')
+      .then(r => r.text())
+      .then(html => {
+        document.body.insertAdjacentHTML('afterbegin', html);
+        const header = document.getElementById('kbdi-header');
+        if (savedTheme === 'light') header.classList.add('kbdi-light');
+        document.getElementById('kbdiThemeToggle').addEventListener('click', function() {
+          const isLight = document.documentElement.classList.toggle('light');
+          header.classList.toggle('kbdi-light', isLight);
+          localStorage.setItem('kbdi-theme', isLight ? 'light' : 'dark');
+          const footer = document.getElementById('kbdi-footer');
+          if (footer) footer.classList.toggle('kbdi-light', isLight);
+        });
+      });
+
+    fetch('https://edukbdi.github.io/footer.html')
+      .then(r => r.text())
+      .then(html => {
+        document.body.insertAdjacentHTML('beforeend', html);
+        const footer = document.getElementById('kbdi-footer');
+        if (footer && savedTheme === 'light') footer.classList.add('kbdi-light');
+      });
+  </script>
+
+</body>
+</html>
